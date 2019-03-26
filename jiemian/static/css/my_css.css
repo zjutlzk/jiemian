@@ -1,0 +1,153 @@
+﻿body,html{
+    height:100%;
+    width:100%
+}
+body{
+    background:#010e50 url(../picture/map_bg.jpg) center top no-repeat;
+    background-size:100% auto;
+}
+li{
+    list-style-type:none;
+}
+.data{
+    width:100%;
+    height:100%
+}
+.data>.data-title{
+    width:100%;
+    height:90px;
+    box-sizing:border-box
+}
+.data>.data-title>.title-center{
+    text-shadow:3px 3px 3px rgba(0,0,0,.3);
+    text-align:center;
+    line-height:80px;
+    color:#fff;
+    font-size:40px;
+    font-weight:bolder;
+    box-sizing:border-box
+}
+.mainbox{
+    padding:30px 20px 0 20px;
+}
+.mainbox>ul{
+    margin-left:-0.4rem;
+    margin-right:-0.4rem;
+}
+ .boxall{
+     padding:15px;
+     background: rgba(0,0,0,0.2);
+     position: relative;
+     margin-bottom:15px;
+ }
+ .boxall2{
+     margin: 0 150px;
+     padding:25px;
+     background: rgba(0,0,0,0.2);
+     position: relative;
+     margin-bottom:15px;
+ }
+.alltitle{
+    font-size:18px;
+    color:#fff;
+    position: relative;
+    padding-left: 12px;
+    margin-bottom: 10px;
+}
+.alltitle:before{
+    width: 5px;
+    height: 20px;
+    top:2px;
+    position: absolute;
+    content: "";
+    background: #49bcf7;
+    border-radius:20px;
+    left: 0;
+}
+.navboxall{
+    height: 300px;
+}
+.mgl{
+    margin-left: 25px !important;
+}
+.mtxt{
+    font-size:13px;
+    color:#fff;
+    position: relative;
+    margin-top: 7px;
+}
+.mcenter{
+    margin-top: 10px;
+    text-align: center;
+}
+.mgt{
+    margin-top: 15px;
+}
+.tslide{
+    padding: 30px 80px;
+}
+#slide1{
+    width: 700px;
+    display: inline-block;
+}
+#percent{
+    margin-left: 30px;
+    color: #fff;
+    position: relative;
+    top: 3px;
+    font-weight: bolder;
+}
+.table1{
+    color: #fff;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.table1 th{
+    border-bottom: 1px solid rgba(255,255,255,.2);
+    font-size: 16px;
+    color:rgba(255,255,255,0.8);
+    padding-bottom: 10px;
+}
+.table1 td{
+    font-size: 16px;
+    color:rgba(255,255,255,0.6);
+    padding-top: 15px;
+}
+.table1 span{
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+    display: inline-block;
+    background: #878787;
+    color: #fff;
+    line-height: 24px;
+    text-align: center;
+}
+.table1 tr:nth-child(2) span{
+    background: #ed405d
+}
+.table1 tr:nth-child(3) span{
+    background: #f78c44
+}
+.table1 tr:nth-child(4) span{
+    background: #49bcf7
+}
+.table1 tr:nth-child(5) span{
+    background: #C1FFC1
+}
+.mprogress{
+    margin-top: 25px;
+    margin-left: 20px;
+}
+.fs{
+    font-size: 15px;
+    font-weight: bolder;
+}
+.fs:before{
+    height: 15px;
+}
+.pros{
+    width: 800px;
+    margin-left: 50px;
+    margin-top: 20px;
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <title>Transfer Learning</title>
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'layui/layui.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my_css.css' %}">
+</head>
+<body>
+<div class="data">
+    <div class="data-title">
+        <div class="title-center">Transfer Learning</div>
+    </div>
+    <div class="mainbox mgt">
+        <div class="boxall2" style="height:450px">
+            <div class="alltitle">请选择训练数据量</div>
+            <div class="tslide">
+                <div id="slide1"></div>
+                <span id="percent"></span>
+            </div>
+            <div class="layui-row mgt">
+                <a class="layui-col-md4 mcenter" id="sub">
+                    <i class="layui-icon layui-icon-ok-circle" style="font-size: 40px; color: #FFF; cursor: pointer;"></i>
+                    <div class="mtxt" style="cursor: pointer">tradaboost</div>
+                </a>
+                <a class="layui-col-md4 mcenter" id="sub2">
+                    <i class="layui-icon layui-icon-menu-fill" style="font-size: 40px; color: #FFF; cursor: pointer;"></i>
+                    <div class="mtxt" style="cursor: pointer">lgbm</div>
+                </a>
+                <a class="layui-col-md4 mcenter" id="sub3">
+                    <i class="layui-icon layui-icon-log" style="font-size: 40px; color: #FFF; cursor: pointer;"></i>
+                    <div class="mtxt" style="cursor: pointer">adaboost</div>
+                </a>
+            </div>
+            <div class="mprogress">
+                <div class="alltitle fs">Tradaboost</div>
+                <div class="pros">
+                    <div class="layui-progress layui-progress-big" lay-showpercent="true" lay-filter="tra">
+                        <div class="layui-progress-bar layui-bg-red" id="p1" lay-percent="0%"></div>
+                    </div>
+                </div>
+                <div class="alltitle fs mgt">Lgbm</div>
+                <div class="pros">
+                    <div class="layui-progress layui-progress-big" lay-showpercent="true" lay-filter="lgbm">
+                        <div class="layui-progress-bar layui-bg-blue" id="p2" lay-percent="0%"></div>
+                    </div>
+                </div>
+                <div class="alltitle fs mgt">Adaboost</div>
+                <div class="pros">
+                    <div class="layui-progress layui-progress-big" lay-showpercent="true" lay-filter="ada">
+                        <div class="layui-progress-bar layui-bg-yellow" id="p3" lay-percent="0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+<script>
+var tvalue = 0;
+layui.use('slider', function(){
+  var slider = layui.slider;
+  slider.render({
+    elem: '#slide1'
+    ,theme: '#1E9FFF'
+    ,min:1
+    ,change: function(value){
+        tvalue = value;
+        console.log(tvalue)
+        $("#percent").text(value+"%")
+  }
+  });
+});
+$("#sub").click(function() {
+    $.ajax({
+        url:"/mtransfer/trans",
+        type:"POST",
+        data:{
+            "value":tvalue,
+            "func":1
+        },
+        success:function(data){
+            var dataObj = JSON.parse(data);
+            var re = String(parseFloat(dataObj["msg"]) * 100) + "%";
+            var p=document.getElementById("p1");
+                p.setAttribute("lay-percent",re);
+            layui.use('element', function(){
+                var $ = layui.jquery
+                ,element = layui.element;
+                element.progress('tra', re);
+                });
+        }
+    })
+})
+$("#sub2").click(function() {
+    $.ajax({
+        url:"/mtransfer/trans",
+        type:"POST",
+        data:{
+            "value":tvalue,
+            "func":2
+        },
+        success:function(data){
+            var dataObj = JSON.parse(data);
+            var re = String(parseFloat(dataObj["msg"]) * 100) + "%";
+            var p=document.getElementById("p2");
+                p.setAttribute("lay-percent",re);
+            layui.use('element', function(){
+                var $ = layui.jquery
+                ,element = layui.element;
+                element.progress('lgbm', re);
+                });
+        }
+    })
+})
+$("#sub3").click(function() {
+    $.ajax({
+        url:"/mtransfer/trans",
+        type:"POST",
+        data:{
+            "value":tvalue,
+            "func":3
+        },
+        success:function(data){
+            var dataObj = JSON.parse(data);
+            var re = String(parseFloat(dataObj["msg"]) * 100) + "%";
+            var p=document.getElementById("p3");
+                p.setAttribute("lay-percent",re);
+            layui.use('element', function(){
+                var $ = layui.jquery
+                ,element = layui.element;
+                element.progress('ada', re);
+                });
+        }
+    })
+})
+</script>
+</html>

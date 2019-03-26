@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>TransferLearning</title>
+  <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}">
+</head>
+<body>
+
+<ul class="layui-nav layui-bg-blue" lay-filter="">
+  <li class="layui-nav-item"><a href="">最新活动</a></li>
+  <li class="layui-nav-item layui-this"><a href="">产品</a></li>
+  <li class="layui-nav-item"><a href="">大数据</a></li>
+  <li class="layui-nav-item">
+    <a href="javascript:;">解决方案</a>
+    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+      <dd><a href="">移动模块</a></dd>
+      <dd><a href="">后台模版</a></dd>
+      <dd><a href="">电商平台</a></dd>
+    </dl>
+  </li>
+  <li class="layui-nav-item"><a href="">社区</a></li>
+</ul>
+
+<div id="main" style="width: 600px;height:400px;">
+
+</div>
+
+<script src="{% static 'layui/layui.js' %}"></script>
+<script src="{% static 'js/echarts.js' %}"></script>
+<script>
+layui.use('element', function(){
+  var element = layui.element;
+
+
+});
+function drawLine() {
+    var xlist = new Array();
+    for(var i=1;i<16;i++){
+        xlist.push(i);
+    }
+    var myChart = echarts.init(document.getElementById('main'));
+    var option = {
+        xAxis: {
+            type: 'category',
+            data: xlist
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: [0.018051, 0.007204, 0.002733, 0.001015, 0.000408, 0.000221, 0.000146, 0.00011, 9.8e-05, 8.4e-05, 7.4e-05, 6.8e-05, 6.7e-05, 6.3e-05, 6e-05],
+            type: 'line',
+            smooth: true
+        }]
+    };
+    myChart.setOption(option);
+}
+drawLine()
+</script>
+</body>
+</html>
